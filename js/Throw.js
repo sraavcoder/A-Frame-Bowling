@@ -19,9 +19,9 @@ AFRAME.registerComponent("balls",{
                 camera.getWorldDirection(direction);
                 var pos = cam.getAttribute("position");
                 ball.setAttribute("position", pos);
-                ball.setAttribute("velocity", direction.multiplyScalar(-10));
+                ball.setAttribute("velocity", direction.multiplyScalar(-20));
                 ball.setAttribute("dynamic-body",{
-                    mass:0,
+                    mass: 3,
                     shape: "sphere"
                 })
         
@@ -34,7 +34,7 @@ AFRAME.registerComponent("balls",{
     removeBall: function(event){
         var element= event.detail.target.el;
         var elementHit = event.detail.body.el;
-        if (elementHit.id.includes("box")) {
+        if (elementHit.id.includes("pin")) {
             var impulse = new CANNON.Vec3(-2,2,1)
             var worldPoint = new CANNON.Vec3().copy(elementHit.getAttribute("position"))
 
